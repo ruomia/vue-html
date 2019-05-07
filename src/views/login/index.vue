@@ -5,7 +5,7 @@
             <h3 class="title">系统登录</h3>
             <el-form-item prop="username" class="item">
                 <el-input
-                    placeholder="邮箱"
+                    placeholder="账号"
                     name="userName"
                     autoComplete="on"
                     v-model="ruleForm.userName">
@@ -31,17 +31,17 @@
                            @click.native="handleLogin()">登录
                 </el-button>
             </div>
-            <div>
+            <!-- <div>
                 <el-button type="primary" style="width:100%;margin-bottom:30px;"
                            @click='showDialog = true'>
                     第三方登录
                 </el-button>
-            </div>
+            </div> -->
         </el-form>
-
+<!-- 
         <el-dialog title="第三方验证" :visible.sync="showDialog">
             邮箱登录成功,请选择第三方验证<br/>
-        </el-dialog>
+        </el-dialog> -->
 
     </div>
 </template>
@@ -58,8 +58,8 @@ export default {
         };
         return {
             ruleForm: {
-                userName: "admin",
-                pwd: "admin",
+                userName: "",
+                pwd: "",
                 checked: true
             },
             rules: {
@@ -83,8 +83,8 @@ export default {
                         .dispatch("loginName", this.ruleForm)
                         .then(response => {
                             this.loading = false;
-                            if (response.code !== 0) {
-                                this.$message.error(response.msg);
+                            if (response.code) {
+                                this.$message.error(response.message);
                                 return;
                             }
                             let path = "/";

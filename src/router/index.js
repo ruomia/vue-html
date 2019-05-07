@@ -9,10 +9,6 @@ import { ROUTER_MODE } from "../config/app";
 
 import Home from "../views/home/index.vue";
 
-// 上传相关
-import tinymce from "../views/components/tinymce-demo.vue";
-import upload from "../views/components/upload-demo.vue";
-
 // 权限管理
 import authRule from "../views/auth/Rule.vue";
 import authAdmin from "../views/auth/Admin.vue";
@@ -78,35 +74,6 @@ export const constantRouterMap = [
             {
                 path: "main",
                 component: main
-            }
-        ]
-    },
-    {
-        path: "/components",
-        redirect: "/components/uploadList",
-        component: Home,
-        name: "components",
-        icon: "tongyong",
-        children: [
-            {
-                path: "uploadList",
-                name: "上传图片的展示",
-                component: r =>
-                    require.ensure(
-                        [],
-                        () => r(require("../views/components/uploadList.vue")),
-                        "home"
-                    )
-            },
-            {
-                path: "tinymce",
-                name: "tinymce富文本编辑器",
-                component: tinymce
-            },
-            {
-                path: "upload",
-                name: "上传的demo",
-                component: upload
             }
         ]
     }

@@ -84,12 +84,13 @@ import {
 } from "../../api/auth/rule";
 const formJson = {
     id: "",
-    pid: "2",
+    pid: 0,
     name: "",
     title: "",
     status: 1,
     condition: "",
-    listorder: 999
+    listorder: 999,
+    path: 0
 };
 export default {
     data() {
@@ -216,20 +217,27 @@ export default {
             }
             // let path = data.path.split('-');
             let path = [];
-            if (this.formData.path) {
-                for (let i = 0; i < this.formData.path.length; i++) {
-                    if (data.path[i] !== "-") {
-                        path.push(Number(data.path[i]));
+            if (this.pidData) {
+                // 先转换成数组
+                let pathList = this.pidData.path.split('-');
+                pathList.forEach(element => {
+                    if(element) {
+                        path.push(Number(element));
                     }
+                });
+                if(formName === 'add') {
+                    path.push(Number(data.id));
+                    this.formData.path = data.path + data.id + '-';
                 }
             }
-
             this.selectedOptions = path;
         },
         editOption(d) {
             let option = this.selectedOptions;
-            this.formData.path = "-" + option.join("-") + "-";
-            this.formData.pid = option[option.length - 1];
+            if(option.length > 0) {
+                this.formData.path = '-' + option.join("-") + '-';
+                this.formData.pid = option[option.length - 1];
+            }          
         },
         formSubmit() {
             this.$refs["dataForm"].validate(valid => {

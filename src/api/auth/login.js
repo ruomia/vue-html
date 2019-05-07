@@ -6,7 +6,7 @@ import axios from "../../utils/axios";
 export function userInfo() {
     return axios({
         url: "/admin/index/userinfo",
-        method: "get",
+        method: "get"
     });
 }
 

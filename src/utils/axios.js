@@ -33,7 +33,6 @@ service.interceptors.request.use(
 // respone拦截器
 service.interceptors.response.use(
     response => {
-        console.log('axios', response);
         const data = response.data;
         if (data.code) {
             if (data.code === 2) {
@@ -44,8 +43,6 @@ service.interceptors.response.use(
                         query: { redirect: router.currentRoute.fullPath } // 从哪个页面跳转过来
                     });
                 });
-            } else if(data.code === 5) {
-                Message.error('您无权访问');
             }
         }
         return data;

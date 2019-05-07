@@ -1,4 +1,4 @@
-import { userInfo, loginName, logout } from "../../api/auth/login";
+import { userInfo, loginName } from "../../api/auth/login";
 import * as types from "../mutation-types";
 import { constantRouterMap } from "../../router";
 import {
@@ -77,18 +77,21 @@ const actions = {
     },
     // 登出
     loginOut({ commit }) {
-        return new Promise((resolve, reject) => {
-            logout()
-                .then(() => {
-                    commit(types.RECEIVE_ADMIN_ID, "");
-                    commit(types.RECEIVE_ADMIN_TOKEN, "");
-                    commit(types.RECEIVE_ADMIN_AUTH_RULES, []);
-                    resolve();
-                })
-                .catch(error => {
-                    reject(error);
-                });
-        });
+        commit(types.RECEIVE_ADMIN_ID, "");
+        commit(types.RECEIVE_ADMIN_TOKEN, "");
+        commit(types.RECEIVE_ADMIN_AUTH_RULES, []);
+        // return new Promise((resolve, reject) => {
+        //     logout()
+        //         .then(() => {
+        //             commit(types.RECEIVE_ADMIN_ID, "");
+        //             commit(types.RECEIVE_ADMIN_TOKEN, "");
+        //             commit(types.RECEIVE_ADMIN_AUTH_RULES, []);
+        //             resolve();
+        //         })
+        //         .catch(error => {
+        //             reject(error);
+        //         });
+        // });
     },
 
     // 前端 登出

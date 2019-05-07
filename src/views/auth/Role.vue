@@ -23,8 +23,7 @@
         <el-table
             v-loading="loading"
             :data="list"
-            style="width: 100%;"
-            max-height="500">
+            style="width: 100%;">
             <el-table-column
                 label="角色 ID"
                 prop="id">
@@ -171,7 +170,7 @@ export default {
                     { required: true, message: "请选择状态", trigger: "change" }
                 ]
             },
-            deleteLoading: false,
+            deleteLoading: false
         };
     },
     methods: {
@@ -198,8 +197,6 @@ export default {
             this.loading = true;
             authRoleList(this.query)
                 .then(response => {
-                    console.log(response);
-
                     this.loading = false;
                     this.list = response.data.list || [];
                     this.total = response.data.total || 0;

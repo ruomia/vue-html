@@ -31,8 +31,7 @@
         <el-table
             v-loading="loading"
             :data="list"
-            style="width: 100%;"
-            max-height="500">
+            style="width: 100%;">
             <el-table-column
                 label="用户 ID"
                 prop="id"
@@ -274,7 +273,6 @@ export default {
                 this.formName = "edit";
                 this.formRules = this.editRules;
             }
-            console.log(this.formData);
         },
         formSubmit() {
             this.$refs["dataForm"].validate(valid => {
