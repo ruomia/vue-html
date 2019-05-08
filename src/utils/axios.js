@@ -9,7 +9,7 @@ const service = axios.create({
     baseURL: BASE_URL, // api的base_url
     timeout: 5000, // 请求超时时间
     headers: {
-        Accept: 'application/json, text/html'
+        Accept: "application/json, text/html"
     }
 });
 

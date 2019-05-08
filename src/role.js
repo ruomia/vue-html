@@ -5,7 +5,6 @@ import "nprogress/nprogress.css"; // Progress 进度条样式
 import { getAdminId } from "./utils/auth"; // 验权
 import { Message } from "element-ui";
 import { asyncRouterMap } from "./router/index";
-import { userInfo } from "./api/auth/login";
 // permissiom judge
 function hasRole(authRules, permissionAuthRules) {
     if (!authRules || authRules.length <= 0) {
@@ -77,7 +76,6 @@ router.beforeEach((to, from, next) => {
             store
                 .dispatch("userInfo")
                 .then(data => {
-                    console.log(data);
                     // 拉取user_info
                     const authRules = data.authRules || [];
                     if (
