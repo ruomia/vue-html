@@ -90,7 +90,7 @@ const formJson = {
     status: 1,
     condition: "",
     listorder: 999,
-    path: 0
+    path: ""
 };
 export default {
     data() {
